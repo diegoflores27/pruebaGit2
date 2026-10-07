@@ -1,4 +1,5 @@
 package pe.edu.unsch;
+
 public class CuentaBancaria {
     private double saldo;
 
@@ -6,21 +7,23 @@ public class CuentaBancaria {
         this.saldo = saldoInicial;
     }
 
-    public void depositar(double monto) {
-        saldo += monto;
-    }
-
-    public double obtenerSaldo() {
-        return saldo;
+    public void depositar(double cantidad) {
+        this.saldo += cantidad;
     }
 
     public void retirar(double monto) {
         if (monto <= saldo) {
             saldo -= monto;
-
         }
+    }
+
     public void cobrarMantenimiento(double tarifa) {
         if (saldo >= tarifa) {
             saldo -= tarifa;
         }
     }
+
+    public double obtenerSaldo() {
+        return saldo;
+    }
+}
