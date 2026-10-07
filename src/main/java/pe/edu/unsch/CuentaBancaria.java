@@ -19,5 +19,8 @@ public class CuentaBancaria {
             saldo -= monto;
 
         }
+    public void cobrarMantenimiento(double tarifa) {
+        if (saldo >= tarifa) {
+            saldo -= tarifa;
+        }
     }
-}

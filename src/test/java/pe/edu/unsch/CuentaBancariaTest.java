@@ -10,4 +10,10 @@ public class CuentaBancariaTest {
         cuenta.depositar(50);
         assertEquals(150, cuenta.obtenerSaldo());
     }
+    @Test
+    void cobroDeMantenimientoDebeReducirSaldo() {
+        CuentaBancaria cuenta = new CuentaBancaria(100);
+        cuenta.cobrarMantenimiento(15);
+        assertEquals(85, cuenta.obtenerSaldo());
+    }
 }
