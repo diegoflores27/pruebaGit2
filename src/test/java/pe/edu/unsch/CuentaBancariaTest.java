@@ -1,29 +1,21 @@
 package pe.edu.unsch;
 
-public class CuentaBancaria {
-    private double saldo;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    public CuentaBancaria(double saldoInicial) {
-        this.saldo = saldoInicial;
+public class CuentaBancariaTest {
+
+    @Test
+    void depositoDebeIncrementarSaldo() {
+        CuentaBancaria cuenta = new CuentaBancaria(100);
+        cuenta.depositar(50);
+        assertEquals(150, cuenta.obtenerSaldo());
     }
 
-    public void depositar(double cantidad) {
-        this.saldo += cantidad;
-    }
-
-    public void retirar(double monto) {
-        if (monto <= saldo) {
-            saldo -= monto;
-        }
-    }
-
-    public void cobrarMantenimiento(double tarifa) {
-        if (saldo >= tarifa) {
-            saldo -= tarifa;
-        }
-    }
-
-    public double obtenerSaldo() {
-        return saldo;
+    @Test
+    void cobroDeMantenimientoDebeReducirSaldo() {
+        CuentaBancaria cuenta = new CuentaBancaria(100);
+        cuenta.cobrarMantenimiento(15);
+        assertEquals(85, cuenta.obtenerSaldo());
     }
 }
