@@ -2,7 +2,7 @@ name: CI Java Maven
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "feature-cobro-comision" ]
   pull_request:
     branches: [ "main" ]
 
