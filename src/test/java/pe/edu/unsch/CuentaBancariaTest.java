@@ -32,4 +32,42 @@ public class CuentaBancariaTest {
         cuenta.depositar(500);
         assertEquals(1500, cuenta.getSaldo());
     }
+    @Test
+    void transferirDinero() {
+
+        CuentaBancaria origen =
+                new CuentaBancaria(1000);
+
+        CuentaBancaria destino =
+                new CuentaBancaria(500);
+
+        origen.transferir(destino, 200);
+
+        assertEquals(800, origen.getSaldo());
+        assertEquals(700, destino.getSaldo());
+    }
+    @Test
+    void cobrarComisionValida() {
+        CuentaBancaria cuenta = new CuentaBancaria(1000);
+
+        cuenta.cobrarComision(50);
+
+        assertEquals(950, cuenta.getSaldo());
+    }
+    @Test
+    void cobrarComisionMayorAlSaldo() {
+        CuentaBancaria cuenta = new CuentaBancaria(100);
+
+        cuenta.cobrarComision(200);
+
+        assertEquals(100, cuenta.getSaldo());
+    }
+    @Test
+    void cobrarComisionNegativa() {
+        CuentaBancaria cuenta = new CuentaBancaria(1000);
+
+        cuenta.cobrarComision(-50);
+
+        assertEquals(1000, cuenta.getSaldo());
+    }
 }
